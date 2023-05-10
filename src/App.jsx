@@ -1,35 +1,37 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import './App.css';
+import { Form, Select, DatePicker, TimePicker, Input, Button } from 'antd';
 
-function App() {
-  const [count, setCount] = useState(0)
+const { TextArea } = Input;
+
+const App = () => {
+  const [form] = Form.useForm();
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <Form form={form}>
+      <Form.Item name="tower">
+        <Select placeholder="Select tower"></Select>
+      </Form.Item>
+      <Form.Item name="floor">
+        <Select placeholder="Select floor"></Select>
+      </Form.Item>
+      <Form.Item name="room">
+        <Select placeholder="Select room"></Select>
+      </Form.Item>
+      <Form.Item name="date">
+        <DatePicker />
+      </Form.Item>
+      <Form.Item name="time">
+        <TimePicker.RangePicker format="HH:mm" />
+      </Form.Item>
+      <Form.Item name="comments">
+        <TextArea placeholder="Comments" />
+      </Form.Item>
+      <Form.Item>
+        <Button>Send</Button>
+        <Button>Clear</Button>
+      </Form.Item>
+    </Form>
+  );
+};
 
-export default App
+export default App;
