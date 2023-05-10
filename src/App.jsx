@@ -17,15 +17,13 @@ const App = () => {
     form.resetFields();
   };
 
-  const handleSend = () => {
-    form
-      .validateFields()
-      .then((values) => {
-        console.log(JSON.stringify(values));
-      })
-      .catch((info) => {
-        console.log('Validation Failed:', info);
-      });
+  const handleSend = async () => {
+    try {
+      const values = await form.validateFields();
+      console.log(JSON.stringify(values));
+    } catch (info) {
+      console.log('Validation Failed:', info);
+    }
   };
 
   return (
