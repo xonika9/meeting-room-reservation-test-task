@@ -1,14 +1,5 @@
 import './App.css';
-import {
-  Form,
-  Select,
-  DatePicker,
-  TimePicker,
-  Input,
-  Button,
-  Col,
-  Row,
-} from 'antd';
+import { Form, Select, DatePicker, TimePicker, Input, Button } from 'antd';
 import moment from 'moment';
 
 const { Option } = Select;
@@ -42,47 +33,39 @@ const App = () => {
 
   return (
     <Form form={form} style={{ display: 'flex', flexDirection: 'column' }}>
-      <Row gutter={[12, 12]}>
-        <Col>
-          <Form.Item
-            name="tower"
-            rules={[{ required: true, message: 'Select a tower' }]}
-          >
-            <Select placeholder="Select tower">
-              <Option value="A">A</Option>
-              <Option value="B">B</Option>
-            </Select>
-          </Form.Item>
-        </Col>
-        <Col>
-          <Form.Item
-            name="floor"
-            rules={[{ required: true, message: 'Select a floor' }]}
-          >
-            <Select placeholder="Select floor">
-              {floors.map((floor) => (
-                <Option key={floor} value={floor}>
-                  {floor}
-                </Option>
-              ))}
-            </Select>
-          </Form.Item>
-        </Col>
-        <Col>
-          <Form.Item
-            name="room"
-            rules={[{ required: true, message: 'Select a room' }]}
-          >
-            <Select placeholder="Select room">
-              {rooms.map((room) => (
-                <Option key={room} value={room}>
-                  {room}
-                </Option>
-              ))}
-            </Select>
-          </Form.Item>
-        </Col>
-      </Row>
+      <Form.Item
+        name="tower"
+        rules={[{ required: true, message: 'Please select a tower' }]}
+      >
+        <Select placeholder="Select tower">
+          <Option value="A">A</Option>
+          <Option value="B">B</Option>
+        </Select>
+      </Form.Item>
+      <Form.Item
+        name="floor"
+        rules={[{ required: true, message: 'Please select a floor' }]}
+      >
+        <Select placeholder="Select floor">
+          {floors.map((floor) => (
+            <Option key={floor} value={floor}>
+              {floor}
+            </Option>
+          ))}
+        </Select>
+      </Form.Item>
+      <Form.Item
+        name="room"
+        rules={[{ required: true, message: 'Please select a room' }]}
+      >
+        <Select placeholder="Select room">
+          {rooms.map((room) => (
+            <Option key={room} value={room}>
+              {room}
+            </Option>
+          ))}
+        </Select>
+      </Form.Item>
 
       <Form.Item
         name="date"
