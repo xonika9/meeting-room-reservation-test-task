@@ -6,6 +6,10 @@ import { dateFormat, floors, rooms, requiredMessage } from './config';
 const { Option } = Select;
 const { TextArea } = Input;
 
+const disabledDate = (current) => {
+  return current && current < moment().startOf('day');
+};
+
 const App = () => {
   const [form] = Form.useForm();
 
@@ -22,10 +26,6 @@ const App = () => {
       .catch((info) => {
         console.log('Validation Failed:', info);
       });
-  };
-
-  const disabledDate = (current) => {
-    return current && current < moment().startOf('day');
   };
 
   return (
