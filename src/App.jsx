@@ -1,13 +1,13 @@
 import './App.css';
 import { Form, Select, DatePicker, TimePicker, Input, Button } from 'antd';
 import moment from 'moment';
+import { dateFormat, floors, rooms, requiredMessage } from './config';
 
 const { Option } = Select;
 const { TextArea } = Input;
 
 const App = () => {
   const [form] = Form.useForm();
-  const dateFormat = 'DD.MM.YYYY';
 
   const handleClear = () => {
     form.resetFields();
@@ -24,9 +24,6 @@ const App = () => {
       });
   };
 
-  const floors = Array.from({ length: 25 }, (_, i) => i + 3);
-  const rooms = Array.from({ length: 10 }, (_, i) => i + 1);
-
   const disabledDate = (current) => {
     return current && current < moment().startOf('day');
   };
@@ -35,7 +32,7 @@ const App = () => {
     <Form form={form} style={{ display: 'flex', flexDirection: 'column' }}>
       <Form.Item
         name="tower"
-        rules={[{ required: true, message: 'Please select a tower' }]}
+        rules={[{ required: true, message: requiredMessage }]}
       >
         <Select placeholder="Select tower">
           <Option value="A">A</Option>
@@ -44,7 +41,7 @@ const App = () => {
       </Form.Item>
       <Form.Item
         name="floor"
-        rules={[{ required: true, message: 'Please select a floor' }]}
+        rules={[{ required: true, message: requiredMessage }]}
       >
         <Select placeholder="Select floor">
           {floors.map((floor) => (
@@ -56,7 +53,7 @@ const App = () => {
       </Form.Item>
       <Form.Item
         name="room"
-        rules={[{ required: true, message: 'Please select a room' }]}
+        rules={[{ required: true, message: requiredMessage }]}
       >
         <Select placeholder="Select room">
           {rooms.map((room) => (
@@ -69,13 +66,13 @@ const App = () => {
 
       <Form.Item
         name="date"
-        rules={[{ required: true, message: 'Select a date' }]}
+        rules={[{ required: true, message: requiredMessage }]}
       >
         <DatePicker disabledDate={disabledDate} format={dateFormat} />
       </Form.Item>
       <Form.Item
         name="time"
-        rules={[{ required: true, message: 'Select a time' }]}
+        rules={[{ required: true, message: requiredMessage }]}
       >
         <TimePicker.RangePicker format="HH:mm" />
       </Form.Item>
